@@ -17,7 +17,6 @@ fs.createReadStream("./kepler_data.csv")
     .on("data", 
 // @ts-ignore
 function (data) {
-    console.log(data);
     if (isHabitablePlanet(data)) {
         habitablePlanets.push(data);
     }
@@ -26,6 +25,6 @@ function (data) {
     console.log(error);
 })
     .on("end", function () {
-    console.log(habitablePlanets);
+    console.log("Found " + habitablePlanets.length + " habitable planets.");
     console.log("finished reading file");
 });
