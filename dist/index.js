@@ -25,6 +25,9 @@ function (data) {
     console.log(error);
 })
     .on("end", function () {
+    console.log(habitablePlanets.map(function (planet) {
+        return planet["kepler_name"];
+    }));
     console.log("Found " + habitablePlanets.length + " habitable planets.");
     console.log("finished reading file");
 });
