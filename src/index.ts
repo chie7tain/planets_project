@@ -3,7 +3,13 @@ const fs = require("fs");
 
 const results: Buffer[] = [];
 fs.createReadStream("./kepler_data.csv")
-  .on("data", (data:Buffer) => {
+  .pipe(
+    parse({
+      comment: "#",
+      columns: true,
+    })
+  )
+  .on("data", (data: Buffer) => {
     results.push(data);
   })
   .on("error", (error: any) => {
